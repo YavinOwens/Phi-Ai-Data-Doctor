@@ -1,0 +1,14 @@
+great_expectations
+transformers
+peft
+torch
+einops
+safetensors
+streamlit
+streamlit_extras
+openai
+plotly
+python_dotenv
+sendgrid
+sqlalchemy==1.4.49
+psycopg2-binary
