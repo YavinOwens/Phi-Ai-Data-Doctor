@@ -12,3 +12,4 @@ python_dotenv
 sendgrid
 sqlalchemy==1.4.49
 psycopg2-binary
+pymysql
