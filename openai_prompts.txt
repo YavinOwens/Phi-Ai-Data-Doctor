@@ -1,0 +1,39 @@
+Sample Prompts for ChatGPT CodeInterpreter
+This document provides a set of generic question prompts that can be used with the ChatGPT CodeInterpreter tool for data analysis tasks. These prompts are designed to facilitate various stages of data analysis, ranging from basic examination of datasets to advanced analytics and recommendations.
+
+Basic Analysis
+Give me a brief overview of the dataset.
+What is the shape of the dataset?
+Show me the first few records.
+Are there any missing values?
+What types of data does the dataset contain?
+Descriptive Statistics
+Provide a summary of statistics for all numerical columns.
+Which columns have the most variation?
+Are there any correlations in the data?
+Which columns have the highest/lowest values?
+What are the unique values in each non-numerical column?
+Data Cleaning
+Clean any missing or null data points.
+Normalize the numerical data.
+Remove any duplicate records.
+Reformat inconsistent data entries.
+Are there any columns that can be dropped due to lack of data?
+Exploratory Data Analysis
+Show me the distribution of data for each column.
+Which columns are correlated with each other?
+Visualize the data in a suitable plot.
+Can you cluster similar records?
+How does variable X affect variable Y over time?
+Advanced Analysis
+Predict the outcome based on the available data.
+Identify any patterns or trends within the data.
+Group similar data points together.
+Detect any anomalies or outliers in the data.
+Determine the key influencing factors for a specific outcome.
+Recommendations and Insights
+What insights can be drawn from the dataset?
+What recommendations would you suggest based on the analysis?
+Are there any potential issues with the data quality?
+What additional data might improve the analysis?
+How can the data be used to make informed decisions?
