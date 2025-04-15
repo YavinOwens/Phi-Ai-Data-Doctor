@@ -1,0 +1,16 @@
+id,address,city,state,zip,price,bedrooms,bathrooms,sqft,year_built,property_type
+1,123 Main St,San Francisco,CA,94110,1250000,3,2,1850,1925,Single Family
+2,456 Oak Ave,San Francisco,CA,94117,1650000,4,3,2200,1938,Single Family
+3,789 Pine St,Oakland,CA,94612,850000,2,1,1200,1965,Condo
+4,101 Market St,San Francisco,CA,94103,950000,1,1,850,2005,Condo
+5,202 Valencia St,San Francisco,CA,94110,1400000,3,2,1950,1912,Single Family
+6,303 College Ave,Berkeley,CA,94704,1350000,4,2.5,2100,1935,Single Family
+7,404 Telegraph Ave,Oakland,CA,94609,750000,2,2,1500,1955,Condo
+8,505 Hayes St,San Francisco,CA,94102,1850000,3,3,2350,1942,Single Family
+9,606 Shattuck Ave,Berkeley,CA,94709,2100000,5,3.5,3200,1922,Single Family
+10,707 Guerrero St,San Francisco,CA,94110,1600000,3,2,1750,1915,Single Family
+11,808 Folsom St,San Francisco,CA,94107,1150000,2,2,1300,2010,Condo
+12,909 Broadway,Oakland,CA,94607,950000,3,2,1600,1968,Condo
+13,1010 Harrison St,San Francisco,CA,94103,1750000,3,2.5,2000,2015,Condo
+14,1111 Divisadero St,San Francisco,CA,94115,2250000,4,3,2600,1932,Single Family
+15,1212 Grand Ave,Oakland,CA,94610,1350000,3,2,1900,1925,Single Family
