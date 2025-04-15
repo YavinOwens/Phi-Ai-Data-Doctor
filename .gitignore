@@ -1,2 +1,67 @@
-.venv
-README.md
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Great Expectations
+great_expectations/uncommitted/
+great_expectations/checkpoints/
+great_expectations/plugins/
+great_expectations/uncommitted_data_docs/
+great_expectations/uncommitted_validations/
+great_expectations/uncommitted_profiles/
+
+# Project specific
+*.log
+logs/
+tmp/
+temp/
+
+# Database
+*.db
+*.sqlite3
+*.sqlite
+
+# Docker volumes
+postgres_data/
+redis_data/
+pgadmin_data/
+code_server_data/
+code_server_extensions/
+
+# Custom folders to ignore
+infosec_files/
+init-scripts/
+instructions_files/
+technical_spec_files/
+libs/

@@ -1,0 +1,138 @@
+---
+title: "Data Quality Validation Tool - Technical Specification"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    code-fold: true
+---
+
+# 1. Overview
+
+This document provides a comprehensive technical specification for the Data Quality Validation Tool. The application leverages Great Expectations, Streamlit, and AI (Ollama) to enable both technical and non-technical users to perform data quality checks on flat files and PostgreSQL databases.
+
+# 2. System Architecture
+
+## 2.1 High-Level Diagram
+
+[DIAGRAM PLACEHOLDER: System architecture showing user, Streamlit app, Great Expectations, Ollama, PostgreSQL, and file system.]
+
+## 2.2 Components
+- **User Interface:** Streamlit web app
+- **Data Validation Engine:** Great Expectations
+- **AI Integration:** Ollama (local LLM for expectation generation)
+- **Data Sources:**
+  - Local file system (CSV, Excel, etc.)
+  - PostgreSQL database
+- **Configuration & Secrets:** .env files, YAML configs
+
+# 3. Application Components
+
+## 3.1 Streamlit App (`app.py`)
+- User authentication (optional)
+- Sidebar for data source selection
+- Main area for data preview, expectation input, and results
+- Calls backend modules for data loading and validation
+
+## 3.2 Data Connectors
+- **Filesystem Connector:** Loads and validates flat files using Pandas and Great Expectations
+- **PostgreSQL Connector:** Connects to PostgreSQL, loads tables, and runs validations
+
+## 3.3 AI Integration
+- Uses Ollama to run a local LLM (e.g., phi4-mini)
+- System prompt guides the LLM to generate valid Great Expectations JSON
+- Handles model output, error correction, and JSON parsing
+
+## 3.4 Great Expectations Integration
+- Context initialization and configuration
+- Datasource and checkpoint management
+- Expectation suite creation and validation execution
+- Result parsing and reporting
+
+# 4. Data Flow
+
+1. **User selects data source and file/table**
+2. **User enters data quality requirement in natural language**
+3. **Streamlit app sends prompt to Ollama**
+4. **Ollama returns JSON with expectation type and parameters**
+5. **App validates and parses JSON**
+6. **Expectation is run via Great Expectations**
+7. **Results are displayed in the UI**
+
+# 5. Configuration & Environment
+
+## 5.1 Environment Variables (`.env`)
+- Database connection (host, port, db, user, password)
+- Ollama host and model
+- Great Expectations home
+
+## 5.2 YAML Configuration
+- `great_expectations.yml` for GE context
+- Datasource and checkpoint definitions
+
+# 6. Dependencies
+
+- **Python 3.8+**
+- **Streamlit** (UI)
+- **Great Expectations** (data validation)
+- **Pandas** (data handling)
+- **SQLAlchemy/psycopg2** (PostgreSQL connection)
+- **Ollama** (local LLM)
+- **Docker** (for PostgreSQL container)
+- **Quarto** (for documentation)
+
+# 7. Extensibility
+
+- **Add new data sources:** Implement new connector classes
+- **Support more file types:** Extend filesystem connector
+- **Integrate other LLMs:** Update AI integration module
+- **Custom expectations:** Add to system prompt and validation logic
+
+# 8. Error Handling & Logging
+
+- **User input validation:** Clear error messages for invalid queries
+- **AI output validation:** Handles invalid/malformed JSON from LLM
+- **Datasource errors:** Catches and reports connection/file errors
+- **Validation errors:** Displays detailed GE error messages
+- **Logging:** (Optional) Add logging for debugging and audit
+
+# 9. Security Considerations
+
+- **Environment variables:** Sensitive data (passwords, keys) not hardcoded
+- **Database access:** Principle of least privilege for DB user
+- **File access:** Restrict file operations to allowed directories
+- **User authentication:** (Optional) Add login for sensitive deployments
+
+# 10. Deployment & Operations
+
+- **Local deployment:** Python virtual environment, Streamlit run
+- **Dockerized database:** PostgreSQL via Docker Compose
+- **Ollama service:** Local LLM must be running
+- **Documentation:** User manual and technical spec in Quarto
+
+# 11. Maintenance & Support
+
+- **Update dependencies regularly**
+- **Monitor for security patches**
+- **Document new features and changes**
+
+# 12. Appendix
+
+## 12.1 Example .env
+```
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=gdpr_fines
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+OLLAMA_HOST=http://localhost:11434
+OLLAMA_MODEL=phi4-mini
+GE_HOME=great_expectations
+```
+
+## 12.2 Example System Prompt for LLM
+```
+You are a data quality assistant. Only generate valid Great Expectations JSON. Use null for missing values. Available columns: ...
+``` 

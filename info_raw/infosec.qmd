@@ -1,0 +1,84 @@
+---
+title: "Data Quality Validation Tool - Information Security Overview"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    code-fold: true
+---
+
+# 1. Introduction
+
+This document outlines the information security (infosec) considerations and best practices for the Data Quality Validation Tool. It is intended for administrators, developers, and users responsible for deploying and maintaining the application.
+
+# 2. Security Principles
+
+- **Confidentiality:** Protect sensitive data from unauthorized access
+- **Integrity:** Ensure data is accurate and unaltered
+- **Availability:** Ensure the tool and data are accessible to authorized users
+
+# 3. Data Protection
+
+## 3.1 Sensitive Data
+- Database credentials, API keys, and passwords are stored in environment variables (`.env` files)
+- No hardcoded secrets in source code
+- Sensitive files should be excluded from version control (`.gitignore`)
+
+## 3.2 Data in Transit
+- Recommend using HTTPS for remote access to the Streamlit app
+- Database connections should use SSL/TLS where possible
+
+## 3.3 Data at Rest
+- Database files and local data should be stored on encrypted disks where possible
+- Regular backups should be performed and stored securely
+
+# 4. Authentication & Access Control
+
+- (Optional) Enable user authentication for the Streamlit app
+- Use least-privilege database accounts (read-only where possible)
+- Restrict file access to necessary directories only
+- Use strong, unique passwords for all accounts
+
+# 5. Network Security
+
+- Run the Streamlit app and database on trusted networks
+- Use firewalls to restrict access to necessary ports (e.g., 8502 for Streamlit, 5432 for PostgreSQL)
+- Do not expose database or admin interfaces to the public internet
+
+# 6. Logging & Monitoring
+
+- Enable application logging for audit and troubleshooting
+- Monitor for unauthorized access attempts or unusual activity
+- Regularly review logs for security events
+
+# 7. Compliance & Privacy
+
+- Ensure compliance with relevant data protection regulations (e.g., GDPR)
+- Do not store or process more data than necessary
+- Provide users with information about data usage and retention
+
+# 8. Secure Development & Maintenance
+
+- Keep all dependencies up to date
+- Apply security patches promptly
+- Review code for security vulnerabilities
+- Use static analysis tools where possible
+
+# 9. Incident Response
+
+- Have a documented process for responding to security incidents
+- Regularly test backup and recovery procedures
+- Notify affected users and stakeholders in the event of a breach
+
+# 10. Best Practices Checklist
+
+- [ ] No hardcoded secrets in code
+- [ ] Environment variables used for all credentials
+- [ ] Strong passwords and least-privilege accounts
+- [ ] Network access restricted by firewall
+- [ ] Regular backups and secure storage
+- [ ] Logging and monitoring enabled
+- [ ] Dependencies kept up to date
+- [ ] Incident response plan in place 

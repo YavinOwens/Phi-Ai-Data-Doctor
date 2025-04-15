@@ -1,0 +1,311 @@
+---
+title: "Data Quality Validation Tool - User Manual"
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+    code-fold: true
+---
+
+# Introduction
+
+Welcome to the Data Quality Validation Tool! This user-friendly application helps you ensure your data is accurate, complete, and reliable. Whether you're working with spreadsheets or databases, this tool makes data quality checking simple and intuitive.
+
+## What is Data Quality?
+
+Data quality refers to how well your data meets your needs. Good quality data should be:
+
+- **Accurate:** Free from errors
+- **Complete:** No missing information
+- **Consistent:** Follows the same format
+- **Timely:** Up-to-date
+- **Relevant:** Useful for your purposes
+
+### Data Quality: Five Pillars
+
+| ![Checkmark](https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/check-circle.svg) | ![Clipboard](https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/clipboard-check.svg) | ![Repeat](https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/arrow-repeat.svg) | ![Clock](https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/clock.svg) | ![Target](https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/bullseye.svg) |
+|:---:|:---:|:---:|:---:|:---:|
+| **Accurate** | **Complete** | **Consistent** | **Timely** | **Relevant** |
+| Free from errors | No missing information | Follows the same format | Up-to-date | Useful for your purposes |
+
+## Key Features
+
+- **Easy-to-Use Interface**: No coding required
+- **Multiple Data Sources**: Works with both files and databases
+- **Smart Validation**: Uses AI to understand your requirements
+- **Clear Results**: Easy-to-understand reports
+- **Helpful Guidance**: Step-by-step assistance
+
+# Getting Started
+
+## What You'll Need
+
+Before you begin, make sure you have:
+
+1. A computer with internet access  
+   (You'll use this to run the application and view results)
+2. Basic knowledge of your data files or database  
+   (Know where your files are stored or have access to your database)
+3. The following software (your IT team can help install these):  
+   - Python (version 3.8 or higher)  
+   - Docker (if using database features)  
+   - Ollama (for AI features)
+
+## Installation Guide
+
+Don't worry if you're not technical! These steps are usually handled by your IT team:
+
+1. **Download the Software**
+   - Your IT team will provide the installation files
+   - They will help set up the necessary programs
+
+2. **Set Up Your Environment**
+   - Your IT team will create a virtual environment
+   - They will install all required components
+
+3. **Configure the Settings**
+   - Your IT team will set up the connection to your database (if needed)
+   - They will configure the AI features
+
+4. **Start the Services**
+   - Your IT team will start the necessary services
+   - They will verify everything is working correctly
+
+# Using the Tool
+
+## Starting the Application
+
+1. **Open the Application**
+   - Double-click the application icon
+   - Or open your web browser and go to: `http://localhost:8502`
+
+2. **First-Time Setup**
+   - The application will guide you through initial setup
+   - Follow the on-screen instructions
+
+## Understanding the Interface
+
+[SCREENSHOT: Main Interface]
+
+The application has two main areas:
+
+1. **Sidebar (Left Side)**
+   - Where you select your data source
+   - Contains navigation and help options
+
+2. **Main Area (Right Side)**
+   - Where you work with your data
+   - Shows results and reports
+
+## Working with Files (For Beginners)
+
+### Step 1: Select Your File
+
+1. In the sidebar, click "Local File System"
+2. Click the dropdown menu
+3. Select your file (like a spreadsheet or CSV)
+
+[SCREENSHOT: File Selection]
+
+### Step 2: Check Your Data
+
+1. **View Your Data**
+   - The application shows a preview of your data
+   - You can scroll through to see all columns
+
+2. **Describe What You Want to Check**
+   - Type what you want to verify in plain English
+   - For example: "Check that all email addresses are valid"
+   - The AI will understand your request
+
+3. **Generate the Check**
+   - Click "Generate Expectations"
+   - The system will create the appropriate checks
+
+[SCREENSHOT: Expectation Generation]
+
+### Step 3: Run the Validation
+
+1. Click "Run Validation"
+2. Wait for the results
+3. Review the findings
+
+### Step 4: Understand the Results
+
+The results will show:
+- ✅ Green checkmarks for passed checks
+- ❌ Red X marks for failed checks
+- 📊 Statistics about your data
+- 📝 Detailed explanations
+
+[SCREENSHOT: Results Display]
+
+## Working with Databases (For Database Users)
+
+### Connecting to Your Database
+
+1. **Select Database Source**
+   - Click "PostgreSQL" in the sidebar
+   - The system will connect automatically
+
+2. **Choose Your Data**
+   - Select your database from the dropdown
+   - Choose the table you want to check
+
+[SCREENSHOT: Table Selection]
+
+### Creating Database Checks
+
+1. **Describe Your Requirements**
+   - Type what you want to verify
+   - For example: "Check that all customer IDs are unique"
+   - The system will understand your request
+
+2. **Run the Validation**
+   - Click "Run Validation"
+   - Review the results
+
+### Understanding Database Results
+
+Results include:
+- Table statistics
+- Column information
+- Validation status
+- Detailed findings
+
+[SCREENSHOT: Database Results]
+
+# Common Tasks and Examples
+
+## Basic Data Checks
+
+Here are some common checks you might want to perform:
+
+1. **Checking for Missing Data**
+   - "Find any empty cells in the customer name column"
+   - "Check for missing dates in the order date column"
+
+2. **Validating Formats**
+   - "Verify that all email addresses look correct"
+   - "Check that phone numbers follow the correct format"
+
+3. **Range Checks**
+   - "Ensure all prices are between $0 and $1000"
+   - "Verify that ages are between 18 and 100"
+
+## Advanced Checks
+
+For more experienced users:
+
+1. **Combining Conditions**
+   - "Check that all orders over $1000 have manager approval"
+   - "Verify that international orders have valid shipping addresses"
+
+2. **Pattern Matching**
+   - "Find any product codes that don't match the standard format"
+   - "Check for invalid characters in names"
+
+# Troubleshooting Guide
+
+## Common Issues and Solutions
+
+1. **Can't Connect to Database**
+   - Check if the database is running
+   - Verify your connection settings
+   - Contact your IT support
+
+2. **File Won't Open**
+   - Make sure the file isn't open in another program
+   - Check if you have permission to access the file
+   - Verify the file format is supported
+
+3. **Unexpected Results**
+   - Review your validation requirements
+   - Check if the data format matches your expectations
+   - Try simplifying your check
+
+## Getting Help
+
+If you encounter problems:
+
+1. **Check the Error Messages**
+   - Read the message carefully
+   - Look for suggested solutions
+
+2. **Use the Help Features**
+   - Click the help icon (?) in the interface
+   - Review the documentation
+
+3. **Contact Support**
+   - Your IT team
+   - The application's support team
+
+# Best Practices
+
+## Data Preparation Tips
+
+1. **Before Running Checks**
+   - Make sure your data is in a consistent format
+   - Remove any test or temporary data
+   - Check for obvious errors
+
+2. **Organizing Your Work**
+   - Keep track of which checks you've run
+   - Document any issues you find
+   - Save your validation results
+
+3. **Regular Maintenance**
+   - Run checks regularly
+   - Update your validation rules as needed
+   - Keep your data clean and organized
+
+# Reference Guide
+
+## Supported File Types
+
+The application can work with:
+- Excel files (.xlsx, .xls)
+- CSV files
+- Text files
+- Database tables
+
+## Common Terms
+
+- **Validation**: Checking if data meets certain rules
+- **Expectation**: A rule that data should follow
+- **Batch**: A group of data being checked
+- **Result**: The outcome of a validation check
+
+## Quick Reference
+
+| Action | How to Do It |
+|--------|--------------|
+| Open a file | Click "Local File System" → Select file |
+| Connect to database | Click "PostgreSQL" → Select database |
+| Run a check | Type requirements → Click "Generate" → Click "Run" |
+| View results | Scroll through the results section |
+| Save results | Click the download button |
+
+# Appendix
+
+## Technical Details
+
+For IT professionals and advanced users:
+
+### Environment Settings
+
+| Setting | Purpose | Default Value |
+|---------|---------|---------------|
+| Database Host | Where your database is located | localhost |
+| Database Port | Connection port number | 5432 |
+| Database Name | Name of your database | gdpr_fines |
+| AI Model | Which AI model to use | phi4-mini |
+
+### System Requirements
+
+- Operating System: Windows 10+, macOS 10.15+, or Linux
+- Memory: 8GB RAM minimum
+- Storage: 1GB free space
+- Network: Internet connection required for AI features 
