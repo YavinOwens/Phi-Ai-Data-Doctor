@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Doctor - Information Security Overview</title>
+<title>Data Quality Validation Tool - Technical Specification</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,17 +23,17 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="infosec_files/libs/clipboard/clipboard.min.js"></script>
-<script src="infosec_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="infosec_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="infosec_files/libs/quarto-html/popper.min.js"></script>
-<script src="infosec_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="infosec_files/libs/quarto-html/anchor.min.js"></script>
-<link href="infosec_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="infosec_files/libs/quarto-html/quarto-syntax-highlighting-226bd0f977fa82dfae4534cac220d79a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="infosec_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="infosec_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="infosec_files/libs/bootstrap/bootstrap-c73da311dcb4b46904599e04e07723a5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="technical_spec_files/libs/clipboard/clipboard.min.js"></script>
+<script src="technical_spec_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="technical_spec_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="technical_spec_files/libs/quarto-html/popper.min.js"></script>
+<script src="technical_spec_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="technical_spec_files/libs/quarto-html/anchor.min.js"></script>
+<link href="technical_spec_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="technical_spec_files/libs/quarto-html/quarto-syntax-highlighting-226bd0f977fa82dfae4534cac220d79a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="technical_spec_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="technical_spec_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="technical_spec_files/libs/bootstrap/bootstrap-c73da311dcb4b46904599e04e07723a5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -46,21 +46,36 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> 1. Introduction</a></li>
-  <li><a href="#security-principles" id="toc-security-principles" class="nav-link" data-scroll-target="#security-principles"><span class="header-section-number">2</span> 2. Security Principles</a></li>
-  <li><a href="#data-protection" id="toc-data-protection" class="nav-link" data-scroll-target="#data-protection"><span class="header-section-number">3</span> 3. Data Protection</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">1</span> 1. Overview</a></li>
+  <li><a href="#system-architecture" id="toc-system-architecture" class="nav-link" data-scroll-target="#system-architecture"><span class="header-section-number">2</span> 2. System Architecture</a>
   <ul class="collapse">
-  <li><a href="#sensitive-data" id="toc-sensitive-data" class="nav-link" data-scroll-target="#sensitive-data"><span class="header-section-number">3.1</span> 3.1 Sensitive Data</a></li>
-  <li><a href="#data-in-transit" id="toc-data-in-transit" class="nav-link" data-scroll-target="#data-in-transit"><span class="header-section-number">3.2</span> 3.2 Data in Transit</a></li>
-  <li><a href="#data-at-rest" id="toc-data-at-rest" class="nav-link" data-scroll-target="#data-at-rest"><span class="header-section-number">3.3</span> 3.3 Data at Rest</a></li>
+  <li><a href="#high-level-diagram" id="toc-high-level-diagram" class="nav-link" data-scroll-target="#high-level-diagram"><span class="header-section-number">2.1</span> 2.1 High-Level Diagram</a></li>
+  <li><a href="#components" id="toc-components" class="nav-link" data-scroll-target="#components"><span class="header-section-number">2.2</span> 2.2 Components</a></li>
   </ul></li>
-  <li><a href="#authentication-access-control" id="toc-authentication-access-control" class="nav-link" data-scroll-target="#authentication-access-control"><span class="header-section-number">4</span> 4. Authentication &amp; Access Control</a></li>
-  <li><a href="#network-security" id="toc-network-security" class="nav-link" data-scroll-target="#network-security"><span class="header-section-number">5</span> 5. Network Security</a></li>
-  <li><a href="#logging-monitoring" id="toc-logging-monitoring" class="nav-link" data-scroll-target="#logging-monitoring"><span class="header-section-number">6</span> 6. Logging &amp; Monitoring</a></li>
-  <li><a href="#compliance-privacy" id="toc-compliance-privacy" class="nav-link" data-scroll-target="#compliance-privacy"><span class="header-section-number">7</span> 7. Compliance &amp; Privacy</a></li>
-  <li><a href="#secure-development-maintenance" id="toc-secure-development-maintenance" class="nav-link" data-scroll-target="#secure-development-maintenance"><span class="header-section-number">8</span> 8. Secure Development &amp; Maintenance</a></li>
-  <li><a href="#incident-response" id="toc-incident-response" class="nav-link" data-scroll-target="#incident-response"><span class="header-section-number">9</span> 9. Incident Response</a></li>
-  <li><a href="#best-practices-checklist" id="toc-best-practices-checklist" class="nav-link" data-scroll-target="#best-practices-checklist"><span class="header-section-number">10</span> 10. Best Practices Checklist</a></li>
+  <li><a href="#application-components" id="toc-application-components" class="nav-link" data-scroll-target="#application-components"><span class="header-section-number">3</span> 3. Application Components</a>
+  <ul class="collapse">
+  <li><a href="#streamlit-app-app.py" id="toc-streamlit-app-app.py" class="nav-link" data-scroll-target="#streamlit-app-app.py"><span class="header-section-number">3.1</span> 3.1 Streamlit App (<code>app.py</code>)</a></li>
+  <li><a href="#data-connectors" id="toc-data-connectors" class="nav-link" data-scroll-target="#data-connectors"><span class="header-section-number">3.2</span> 3.2 Data Connectors</a></li>
+  <li><a href="#ai-integration" id="toc-ai-integration" class="nav-link" data-scroll-target="#ai-integration"><span class="header-section-number">3.3</span> 3.3 AI Integration</a></li>
+  <li><a href="#great-expectations-integration" id="toc-great-expectations-integration" class="nav-link" data-scroll-target="#great-expectations-integration"><span class="header-section-number">3.4</span> 3.4 Great Expectations Integration</a></li>
+  </ul></li>
+  <li><a href="#data-flow" id="toc-data-flow" class="nav-link" data-scroll-target="#data-flow"><span class="header-section-number">4</span> 4. Data Flow</a></li>
+  <li><a href="#configuration-environment" id="toc-configuration-environment" class="nav-link" data-scroll-target="#configuration-environment"><span class="header-section-number">5</span> 5. Configuration &amp; Environment</a>
+  <ul class="collapse">
+  <li><a href="#environment-variables-.env" id="toc-environment-variables-.env" class="nav-link" data-scroll-target="#environment-variables-.env"><span class="header-section-number">5.1</span> 5.1 Environment Variables (<code>.env</code>)</a></li>
+  <li><a href="#yaml-configuration" id="toc-yaml-configuration" class="nav-link" data-scroll-target="#yaml-configuration"><span class="header-section-number">5.2</span> 5.2 YAML Configuration</a></li>
+  </ul></li>
+  <li><a href="#dependencies" id="toc-dependencies" class="nav-link" data-scroll-target="#dependencies"><span class="header-section-number">6</span> 6. Dependencies</a></li>
+  <li><a href="#extensibility" id="toc-extensibility" class="nav-link" data-scroll-target="#extensibility"><span class="header-section-number">7</span> 7. Extensibility</a></li>
+  <li><a href="#error-handling-logging" id="toc-error-handling-logging" class="nav-link" data-scroll-target="#error-handling-logging"><span class="header-section-number">8</span> 8. Error Handling &amp; Logging</a></li>
+  <li><a href="#security-considerations" id="toc-security-considerations" class="nav-link" data-scroll-target="#security-considerations"><span class="header-section-number">9</span> 9. Security Considerations</a></li>
+  <li><a href="#deployment-operations" id="toc-deployment-operations" class="nav-link" data-scroll-target="#deployment-operations"><span class="header-section-number">10</span> 10. Deployment &amp; Operations</a></li>
+  <li><a href="#maintenance-support" id="toc-maintenance-support" class="nav-link" data-scroll-target="#maintenance-support"><span class="header-section-number">11</span> 11. Maintenance &amp; Support</a></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix"><span class="header-section-number">12</span> 12. Appendix</a>
+  <ul class="collapse">
+  <li><a href="#example-.env" id="toc-example-.env" class="nav-link" data-scroll-target="#example-.env"><span class="header-section-number">12.1</span> 12.1 Example .env</a></li>
+  <li><a href="#example-system-prompt-for-llm" id="toc-example-system-prompt-for-llm" class="nav-link" data-scroll-target="#example-system-prompt-for-llm"><span class="header-section-number">12.2</span> 12.2 Example System Prompt for LLM</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -68,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Doctor - Information Security Overview</h1>
+<h1 class="title">Data Quality Validation Tool - Technical Specification</h1>
 </div>
 
 
@@ -85,105 +100,172 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> 1. Introduction</h1>
-<p>This document outlines the information security (infosec) considerations and best practices for Data Doctor. It is intended for administrators, developers, and users responsible for deploying and maintaining the application.</p>
+<section id="overview" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 1. Overview</h1>
+<p>This document provides a comprehensive technical specification for the Data Quality Validation Tool. The application leverages Great Expectations, Streamlit, and AI (Ollama) to enable both technical and non-technical users to perform data quality checks on flat files and PostgreSQL databases.</p>
 </section>
-<section id="security-principles" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> 2. Security Principles</h1>
+<section id="system-architecture" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 2. System Architecture</h1>
+<section id="high-level-diagram" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="high-level-diagram"><span class="header-section-number">2.1</span> 2.1 High-Level Diagram</h2>
+<p>[DIAGRAM PLACEHOLDER: System architecture showing user, Streamlit app, Great Expectations, Ollama, PostgreSQL, and file system.]</p>
+</section>
+<section id="components" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="components"><span class="header-section-number">2.2</span> 2.2 Components</h2>
 <ul>
-<li><strong>Confidentiality:</strong> Protect sensitive data from unauthorized access</li>
-<li><strong>Integrity:</strong> Ensure data is accurate and unaltered</li>
-<li><strong>Availability:</strong> Ensure the tool and data are accessible to authorized users</li>
-</ul>
-</section>
-<section id="data-protection" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> 3. Data Protection</h1>
-<section id="sensitive-data" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="sensitive-data"><span class="header-section-number">3.1</span> 3.1 Sensitive Data</h2>
+<li><strong>User Interface:</strong> Streamlit web app</li>
+<li><strong>Data Validation Engine:</strong> Great Expectations</li>
+<li><strong>AI Integration:</strong> Ollama (local LLM for expectation generation)</li>
+<li><strong>Data Sources:</strong>
 <ul>
-<li>Database credentials, API keys, and passwords are stored in environment variables (<code>.env</code> files)</li>
-<li>No hardcoded secrets in source code</li>
-<li>Sensitive files should be excluded from version control (<code>.gitignore</code>)</li>
+<li>Local file system (CSV, Excel, etc.)</li>
+<li>PostgreSQL database</li>
+</ul></li>
+<li><strong>Configuration &amp; Secrets:</strong> .env files, YAML configs</li>
 </ul>
 </section>
-<section id="data-in-transit" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="data-in-transit"><span class="header-section-number">3.2</span> 3.2 Data in Transit</h2>
+</section>
+<section id="application-components" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 3. Application Components</h1>
+<section id="streamlit-app-app.py" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="streamlit-app-app.py"><span class="header-section-number">3.1</span> 3.1 Streamlit App (<code>app.py</code>)</h2>
 <ul>
-<li>Recommend using HTTPS for remote access to the Streamlit app</li>
-<li>Database connections should use SSL/TLS where possible</li>
+<li>User authentication (optional)</li>
+<li>Sidebar for data source selection</li>
+<li>Main area for data preview, expectation input, and results</li>
+<li>Calls backend modules for data loading and validation</li>
 </ul>
 </section>
-<section id="data-at-rest" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="data-at-rest"><span class="header-section-number">3.3</span> 3.3 Data at Rest</h2>
+<section id="data-connectors" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="data-connectors"><span class="header-section-number">3.2</span> 3.2 Data Connectors</h2>
 <ul>
-<li>Database files and local data should be stored on encrypted disks where possible</li>
-<li>Regular backups should be performed and stored securely</li>
+<li><strong>Filesystem Connector:</strong> Loads and validates flat files using Pandas and Great Expectations</li>
+<li><strong>PostgreSQL Connector:</strong> Connects to PostgreSQL, loads tables, and runs validations</li>
 </ul>
 </section>
-</section>
-<section id="authentication-access-control" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> 4. Authentication &amp; Access Control</h1>
+<section id="ai-integration" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="ai-integration"><span class="header-section-number">3.3</span> 3.3 AI Integration</h2>
 <ul>
-<li>(Optional) Enable user authentication for the Streamlit app</li>
-<li>Use least-privilege database accounts (read-only where possible)</li>
-<li>Restrict file access to necessary directories only</li>
-<li>Use strong, unique passwords for all accounts</li>
+<li>Uses Ollama to run a local LLM (e.g., phi4-mini)</li>
+<li>System prompt guides the LLM to generate valid Great Expectations JSON</li>
+<li>Handles model output, error correction, and JSON parsing</li>
 </ul>
 </section>
-<section id="network-security" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> 5. Network Security</h1>
+<section id="great-expectations-integration" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="great-expectations-integration"><span class="header-section-number">3.4</span> 3.4 Great Expectations Integration</h2>
 <ul>
-<li>Run the Streamlit app and database on trusted networks</li>
-<li>Use firewalls to restrict access to necessary ports (e.g., 8502 for Streamlit, 5432 for PostgreSQL)</li>
-<li>Do not expose database or admin interfaces to the public internet</li>
+<li>Context initialization and configuration</li>
+<li>Datasource and checkpoint management</li>
+<li>Expectation suite creation and validation execution</li>
+<li>Result parsing and reporting</li>
 </ul>
 </section>
-<section id="logging-monitoring" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> 6. Logging &amp; Monitoring</h1>
+</section>
+<section id="data-flow" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 4. Data Flow</h1>
+<ol type="1">
+<li><strong>User selects data source and file/table</strong></li>
+<li><strong>User enters data quality requirement in natural language</strong></li>
+<li><strong>Streamlit app sends prompt to Ollama</strong></li>
+<li><strong>Ollama returns JSON with expectation type and parameters</strong></li>
+<li><strong>App validates and parses JSON</strong></li>
+<li><strong>Expectation is run via Great Expectations</strong></li>
+<li><strong>Results are displayed in the UI</strong></li>
+</ol>
+</section>
+<section id="configuration-environment" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 5. Configuration &amp; Environment</h1>
+<section id="environment-variables-.env" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="environment-variables-.env"><span class="header-section-number">5.1</span> 5.1 Environment Variables (<code>.env</code>)</h2>
 <ul>
-<li>Enable application logging for audit and troubleshooting</li>
-<li>Monitor for unauthorized access attempts or unusual activity</li>
-<li>Regularly review logs for security events</li>
+<li>Database connection (host, port, db, user, password)</li>
+<li>Ollama host and model</li>
+<li>Great Expectations home</li>
 </ul>
 </section>
-<section id="compliance-privacy" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> 7. Compliance &amp; Privacy</h1>
+<section id="yaml-configuration" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="yaml-configuration"><span class="header-section-number">5.2</span> 5.2 YAML Configuration</h2>
 <ul>
-<li>Ensure compliance with relevant data protection regulations (e.g., GDPR)</li>
-<li>Do not store or process more data than necessary</li>
-<li>Provide users with information about data usage and retention</li>
+<li><code>great_expectations.yml</code> for GE context</li>
+<li>Datasource and checkpoint definitions</li>
 </ul>
 </section>
-<section id="secure-development-maintenance" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> 8. Secure Development &amp; Maintenance</h1>
+</section>
+<section id="dependencies" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 6. Dependencies</h1>
 <ul>
-<li>Keep all dependencies up to date</li>
-<li>Apply security patches promptly</li>
-<li>Review code for security vulnerabilities</li>
-<li>Use static analysis tools where possible</li>
+<li><strong>Python 3.8+</strong></li>
+<li><strong>Streamlit</strong> (UI)</li>
+<li><strong>Great Expectations</strong> (data validation)</li>
+<li><strong>Pandas</strong> (data handling)</li>
+<li><strong>SQLAlchemy/psycopg2</strong> (PostgreSQL connection)</li>
+<li><strong>Ollama</strong> (local LLM)</li>
+<li><strong>Docker</strong> (for PostgreSQL container)</li>
+<li><strong>Quarto</strong> (for documentation)</li>
 </ul>
 </section>
-<section id="incident-response" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> 9. Incident Response</h1>
+<section id="extensibility" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 7. Extensibility</h1>
 <ul>
-<li>Have a documented process for responding to security incidents</li>
-<li>Regularly test backup and recovery procedures</li>
-<li>Notify affected users and stakeholders in the event of a breach</li>
+<li><strong>Add new data sources:</strong> Implement new connector classes</li>
+<li><strong>Support more file types:</strong> Extend filesystem connector</li>
+<li><strong>Integrate other LLMs:</strong> Update AI integration module</li>
+<li><strong>Custom expectations:</strong> Add to system prompt and validation logic</li>
 </ul>
 </section>
-<section id="best-practices-checklist" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> 10. Best Practices Checklist</h1>
-<ul class="task-list">
-<li><label><input type="checkbox">No hardcoded secrets in code</label></li>
-<li><label><input type="checkbox">Environment variables used for all credentials</label></li>
-<li><label><input type="checkbox">Strong passwords and least-privilege accounts</label></li>
-<li><label><input type="checkbox">Network access restricted by firewall</label></li>
-<li><label><input type="checkbox">Regular backups and secure storage</label></li>
-<li><label><input type="checkbox">Logging and monitoring enabled</label></li>
-<li><label><input type="checkbox">Dependencies kept up to date</label></li>
-<li><label><input type="checkbox">Incident response plan in place</label></li>
+<section id="error-handling-logging" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 8. Error Handling &amp; Logging</h1>
+<ul>
+<li><strong>User input validation:</strong> Clear error messages for invalid queries</li>
+<li><strong>AI output validation:</strong> Handles invalid/malformed JSON from LLM</li>
+<li><strong>Datasource errors:</strong> Catches and reports connection/file errors</li>
+<li><strong>Validation errors:</strong> Displays detailed GE error messages</li>
+<li><strong>Logging:</strong> (Optional) Add logging for debugging and audit</li>
 </ul>
+</section>
+<section id="security-considerations" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 9. Security Considerations</h1>
+<ul>
+<li><strong>Environment variables:</strong> Sensitive data (passwords, keys) not hardcoded</li>
+<li><strong>Database access:</strong> Principle of least privilege for DB user</li>
+<li><strong>File access:</strong> Restrict file operations to allowed directories</li>
+<li><strong>User authentication:</strong> (Optional) Add login for sensitive deployments</li>
+</ul>
+</section>
+<section id="deployment-operations" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> 10. Deployment &amp; Operations</h1>
+<ul>
+<li><strong>Local deployment:</strong> Python virtual environment, Streamlit run</li>
+<li><strong>Dockerized database:</strong> PostgreSQL via Docker Compose</li>
+<li><strong>Ollama service:</strong> Local LLM must be running</li>
+<li><strong>Documentation:</strong> User manual and technical spec in Quarto</li>
+</ul>
+</section>
+<section id="maintenance-support" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> 11. Maintenance &amp; Support</h1>
+<ul>
+<li><strong>Update dependencies regularly</strong></li>
+<li><strong>Monitor for security patches</strong></li>
+<li><strong>Document new features and changes</strong></li>
+</ul>
+</section>
+<section id="appendix" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> 12. Appendix</h1>
+<section id="example-.env" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="example-.env"><span class="header-section-number">12.1</span> 12.1 Example .env</h2>
+<pre><code>POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=gdpr_fines
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+OLLAMA_HOST=http://localhost:11434
+OLLAMA_MODEL=phi4-mini
+GE_HOME=great_expectations</code></pre>
+</section>
+<section id="example-system-prompt-for-llm" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="example-system-prompt-for-llm"><span class="header-section-number">12.2</span> 12.2 Example System Prompt for LLM</h2>
+<pre><code>You are a data quality assistant. Only generate valid Great Expectations JSON. Use null for missing values. Available columns: ...</code></pre>
+</section>
 </section>
 
 </main>

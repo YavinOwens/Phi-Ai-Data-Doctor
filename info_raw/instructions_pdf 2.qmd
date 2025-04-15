@@ -1,0 +1,38 @@
+---
+title: "Data Quality Validation Tool - User Manual"
+format: 
+  pdf:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    colorlinks: true
+    geometry: margin=1in
+---
+
+# Introduction
+
+Welcome to the Data Quality Validation Tool! This user-friendly application helps you ensure your data is accurate, complete, and reliable. Whether you're working with spreadsheets or databases, this tool makes data quality checking simple and intuitive.
+
+## What is Data Quality?
+
+Data quality refers to how well your data meets your needs. Good quality data should be:
+
+- **Accurate:** Free from errors
+- **Complete:** No missing information
+- **Consistent:** Follows the same format
+- **Timely:** Up-to-date
+- **Relevant:** Useful for your purposes
+
+### Data Quality: Five Pillars
+
+| Dimension   | Description                |
+|-------------|----------------------------|
+| **Accurate**   | Free from errors           |
+| **Complete**   | No missing information     |
+| **Consistent** | Follows the same format    |
+| **Timely**     | Up-to-date                 |
+| **Relevant**   | Useful for your purposes   |
+
+# Key Features
+
+... (rest of the manual content copied from instructions.qmd, with the same structure but without icon images in the Five Pillars table) ... 
